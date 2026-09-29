@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nigoh — Nafis Did va Premium Moda Maydoni</title>
+  <meta name="description" content="Nigoh — O'zbekistonning oltin va oq rangdagi nafis moda ilovasi. Xitoy va Toshkentdan eng sara kiyimlar, bayram chegirmalari, o'z do'koningizni ochish va Sun'iy Intellekt stilis yordami.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <span>✨ <strong>Nigoh Premium:</strong> O'z do'koningizni oching yoki bayram chegirmalaridan foydalaning!</span>
+      <div class="announcement-links">
+        <a href="#tushuntirish" id="open-rules-btn"><i data-lucide="help-circle"></i> Sotuvchilar tushuntirnomasi</a>
+        <span class="divider">|</span>
+        <button id="header-open-ai-btn" class="ai-pill-btn"><i data-lucide="sparkles"></i> Nigoh AI Maslahatchi</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo-area" id="logo-home">
+        <div class="logo-emblem">N</div>
+        <div class="logo-text">
+          <span class="brand-name">NIGOH</span>
+          <span class="brand-tagline">HAUTE COUTURE & MARKETPLACE</span>
+        </div>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-box">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="search-input" placeholder="Libos, fason, tovar yoki brend izlash...">
+        <button class="search-clear-btn" id="search-clear" style="display: none;"><i data-lucide="x"></i></button>
+      </div>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <!-- Open Shop Button -->
+        <button class="gold-outline-btn" id="open-shop-modal-btn">
+          <i data-lucide="store"></i>
+          <span>Do'kon ochish</span>
+        </button>
+
+        <!-- Wishlist / Likes -->
+        <button class="icon-action-btn" id="open-wishlist-btn" title="Sevimlilar">
+          <i data-lucide="heart"></i>
+          <span class="badge" id="wishlist-count">0</span>
+        </button>
+
+        <!-- Cart -->
+        <button class="icon-action-btn" id="open-cart-btn" title="Savat">
+          <i data-lucide="shopping-bag"></i>
+          <span class="badge" id="cart-count">0</span>
+        </button>
+
+        <!-- User Profile / Auth -->
+        <div class="auth-btn-wrapper" id="auth-actions-container">
+          <button class="gold-gradient-btn" id="login-modal-btn">
+            <i data-lucide="user"></i>
+            <span>Kirish</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category & Filter Ribbon -->
+  <nav class="sub-nav">
+    <div class="container sub-nav-inner">
+      <div class="categories-tabs" id="category-tabs">
+        <button class="category-btn active" data-category="all">Barchasi</button>
+        <button class="category-btn" data-category="ayollar">Ayollar liboslari</button>
+        <button class="category-btn" data-category="erkaklar">Erkaklar liboslari</button>
+        <button class="category-btn" data-category="poyabzal">Poyabzal & Aksessuar</button>
+        <button class="category-btn" data-category="bayram">🎉 Bayram chegirmalari</button>
+        <button class="category-btn" data-category="toshkent">📍 Toshkentda mavjud</button>
+        <button class="category-btn" data-category="xitoy">✈️ Xitoydan buyurtma</button>
+      </div>
+      <div class="sub-nav-right">
+        <button id="about-nigoh-btn" class="text-link-btn"><i data-lucide="info"></i> Nigoh haqida</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    
+    <!-- Hero Banner with Gold-White Elegance -->
+    <section class="hero-section">
+      <div class="container hero-card">
+        <div class="hero-content">
+          <span class="gold-subtitle"><i data-lucide="award"></i> PREMIUM O'ZBEKISTON MODA PLATFORMASI</span>
+          <h1 class="hero-title">O'z didingiz va uslubingizni <br><span class="gold-text-gradient">Nigoh</span> orqali namoyon eting</h1>
+          <p class="hero-description">
+            Nigoh saytida siz o'zingiz xohlagan har qanday nafis libos yoki o'z stilingizni osongina topishingiz,
+            yoki shaxsiy do'koningizni ochib, Xitoy va Toshkentdan tovarlaringizni butun mamlakatga sota olasiz.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#catalog" class="gold-solid-btn"><i data-lucide="compass"></i> Kolleksiyani ko'rish</a>
+            <button class="white-gold-btn" id="hero-open-vendor-btn"><i data-lucide="store"></i> O'z do'koningizni oching</button>
+          </div>
+          <div class="hero-highlights">
+            <div class="highlight-item">
+              <i data-lucide="truck"></i>
+              <div>
+                <strong>Yandex & Qulay yetkazish</strong>
+                <p>To'g'ridan-to'g'ri uyingizgacha</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <i data-lucide="sparkles"></i>
+              <div>
+                <strong>Nigoh AI Yordamchi</strong>
+                <p>Shaxsiy stilist va maslahatchi</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <i data-lucide="percent"></i>
+              <div>
+                <strong>Bayram chegirmalari</strong>
+                <p>Eksklyuziv narx takliflari</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Catalog Section -->
+    <section class="catalog-section" id="catalog">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Eng Sara Liboslar & Kolleksiyalar</h2>
+            <p class="section-subtitle">O'lchamlar, kelish muddati va bayramona chegirmalar bilan to'liq tanishing</p>
+          </div>
+          <div class="catalog-toolbar">
+            <span id="product-count-label" class="product-counter">Yuklanmoqda...</span>
+            <select id="sort-select" class="gold-select">
+              <option value="newest">Yangi qo'shilganlar</option>
+              <option value="popular">Eng ko'p layk yig'ganlar</option>
+              <option value="discount">Eng katta chegirmalar</option>
+              <option value="price-asc">Narx: Arzondan qimmatga</option>
+              <option value="price-desc">Narx: Qimmatdan arzonga</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="product-grid" id="product-grid">
+          <!-- Dynamically populated -->
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+          <div class="empty-icon"><i data-lucide="package-search"></i></div>
+          <h3>Mos tovar topilmadi</h3>
+          <p>Boshqa toifa yoki qidiruv so'zini sinab ko'ring.</p>
+          <button class="gold-outline-btn" id="reset-filter-btn">Barcha tovarlarni ko'rish</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seller Banner & Logistics Guide Callout -->
+    <section class="seller-guide-banner" id="tushuntirish">
+      <div class="container">
+        <div class="guide-box">
+          <div class="guide-header">
+            <span class="gold-badge"><i data-lucide="shield-check"></i> SOTUVCHILAR UCHUN RAHBARIYAT</span>
+            <h2>O'z magaziningizni Nigoh bilan qanday ochasiz?</h2>
+            <p>Xitoydan yoki Toshkentdan savdo qilayotgan har bir tadbirkor va yangi boshlovchilar uchun ochiq imkoniyat.</p>
+          </div>
+          <div class="guide-grid">
+            <div class="guide-step-card">
+              <div class="step-num">01</div>
+              <h4>ID Karta orqali tasdiqlash</h4>
+              <p>O'z do'koningizni xavfsiz va ishonchli ro'yxatdan o'tkazish uchun ID karta yoki Pasport ma'lumotlarini kiriting.</p>
+            </div>
+            <div class="guide-step-card">
+              <div class="step-num">02</div>
+              <h4>Tovarlarni qulay joylash</h4>
+              <p>Rasmlar, kelish muddati (Toshkent / Xitoy), razmerlar (S, M, L, XL) hamda istalgan vaqtda bayram chegirmalarini belgilang.</p>
+            </div>
+            <div class="guide-step-card">
+              <div class="step-num">03</div>
+              <h4>Yandex & Pochta orqali jo'natish</h4>
+              <p>Mijozning uy manzilini olib Yandex Delivery orqali tezkor yuboring yoki avval qanday usulda yuborgan bo'lsangiz shunday jo'nating.</p>
+            </div>
+          </div>
+          <div class="guide-action">
+            <button class="gold-solid-btn" id="guide-open-vendor-btn"><i data-lucide="file-text"></i> Tushuntirnomani to'liq o'qish & Do'kon ochish</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-col brand-col">
+        <div class="logo-area">
+          <div class="logo-emblem">N</div>
+          <div class="logo-text">
+            <span class="brand-name">NIGOH</span>
+            <span class="brand-tagline">Nafis uslub maydoni</span>
+          </div>
+        </div>
+        <p class="footer-desc">
+          O'zbekistondagi eng nafis va qulay kiyim-kechak ilovasi. 
+          Sotuvchilar uchun mustaqil maydon, xaridorlar uchun esa didli tanlov.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Xaridorlar uchun</h4>
+        <ul>
+          <li><a href="#catalog">Barcha kolleksiyalar</a></li>
+          <li><a href="#" id="footer-track-order-btn">Buyurtmani kuzatish</a></li>
+          <li><a href="#" id="footer-open-ai-btn">Nigoh AI Stylist maslahati</a></li>
+          <li><a href="#" id="footer-open-wishlist-btn">Sevimlilar ro'yxati</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Sotuvchilar uchun</h4>
+        <ul>
+          <li><a href="#" id="footer-vendor-reg-btn">Do'kon ochish (ID karta bilan)</a></li>
+          <li><a href="#" id="footer-rules-btn">Logistika va Yandex yo'riqnomasi</a></li>
+          <li><a href="#" id="footer-vendor-cabinet-btn">Sotuvchi shaxsiy kabineti</a></li>
+          <li><a href="#" id="footer-holiday-promo-btn">Bayram chegirmalarini qo'yish</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Biz bilan bog'lanish</h4>
+        <p><i data-lucide="map-pin"></i> O'zbekiston, Toshkent & Xitoy kargo hamkorligi</p>
+        <p><i data-lucide="mail"></i> support@nigoh.uz</p>
+        <p><i data-lucide="phone"></i> +998 (71) 200-00-00</p>
+        <div class="footer-badge-gold">
+          <i data-lucide="shield-check"></i> 100% Xavfsiz xarid va ishonchli do'konlar
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span>© 2026 Nigoh. Barcha huquqlar himoyalangan. Oltin va oq dizayn mukammalligi.</span>
+        <span>Supabase & Vercel orqali tezkor va xavfsiz ishlaydi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- 1. WELCOME ONBOARDING MODAL (Nigoh haqida mukammal tanishtiruv) -->
+  <div class="modal-backdrop" id="welcome-modal" style="display: none;">
+    <div class="modal-container onboarding-modal-content">
+      <button class="modal-close-btn" id="welcome-modal-close"><i data-lucide="x"></i></button>
+      <div class="onboarding-header">
+        <div class="gold-crown-icon"><i data-lucide="sparkles"></i></div>
+        <span class="gold-badge">XUSH KELIBSIZ</span>
+        <h2>Nigoh ilovasiga marhamat!</h2>
+      </div>
+      <div class="onboarding-body">
+        <p class="onboarding-main-text">
+          <strong>Nigoh</strong> — bu nafis did, betakror uslub va zamonaviy qulaylik birlashgan premium moda maydoni.
+        </p>
+        <div class="onboarding-feature-cards">
+          <div class="onboard-card">
+            <div class="onboard-icon"><i data-lucide="sparkles"></i></div>
+            <h4>O'z stilingizni toping</h4>
+            <p>Toshkentdagi eng sara butiklar yoki bevosita Xitoydan buyurtma qilinadigan zamonaviy liboslarni o'lchamlari va kelish muddati bilan ko'ring.</p>
+          </div>
+          <div class="onboard-card">
+            <div class="onboard-icon"><i data-lucide="store"></i></div>
+            <h4>O'z magaziningizni oching</h4>
+            <p>ID kartangiz bilan do'koningizni ro'yxatdan o'tkazing, tovarlaringizga bayram chegirmalari belgilang va Yandex Delivery orqali mijozingizga tezda yetkazing.</p>
+          </div>
+          <div class="onboard-card">
+            <div class="onboard-icon"><i data-lucide="bot"></i></div>
+            <h4>Nigoh AI Yordamchi</h4>
+            <p>Kiyimlarni bir-biriga moslash, qomatga qarab razmer tanlash va do'kon yurgazish bo'yicha sun'iy intellektdan real vaqtda maslahat oling.</p>
+          </div>
+        </div>
+      </div>
+      <div class="onboarding-footer">
+        <button class="gold-solid-btn" id="welcome-start-shopping-btn">Xaridni boshlash</button>
+        <button class="gold-outline-btn" id="welcome-open-shop-btn">O'z do'konimni ochish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. SOTUVCHILAR TUSHUNTIRNOMASI (Vendor Logistics & Rules Modal) -->
+  <div class="modal-backdrop" id="seller-rules-modal" style="display: none;">
+    <div class="modal-container rules-modal-content">
+      <button class="modal-close-btn" id="seller-rules-close"><i data-lucide="x"></i></button>
+      <div class="modal-header">
+        <span class="gold-badge"><i data-lucide="book-open"></i> RASMIY NIZOM</span>
+        <h2>Do'kon egalari uchun to'liq tushuntirnoma</h2>
+        <p>Ilovada o'z do'koningizni muvaffaqiyatli ochish va yurgazish qoidalari</p>
+      </div>
+      <div class="rules-body">
+        <div class="rule-block">
+          <div class="rule-icon"><i data-lucide="id-card"></i></div>
+          <div>
+            <h4>1. ID karta va do'kon xavfsizligi</h4>
+            <p>Nigoh ilovasida xaridorlar ishonchini kafolatlash maqsadida, do'kon ochuvchi har bir shaxs o'zining ID karta (yoki pasport) ma'lumotlarini kiritadi. Bu orqali qalbaki yoki mas'uliyatsiz sotuvchilar filtrlanadi.</p>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-icon"><i data-lucide="navigation"></i></div>
+          <div>
+            <h4>2. Buyurtmani mijozga yuborish (Logistika yo'li)</h4>
+            <p>Do'kon egasi buyurtma tushgan zahoti xaridorning to'liq uy manzilini ko'radi. 
+            Sotuvchi o'ziga qulay yo'lni tanlaydi: 
+            <strong>Yandex Delivery</strong> orqali mijozning eshigigacha buyurtma qiladi yoki sotuvchi ilgari o'z mijozlariga buyurtmalarni qanday jo'natgan bo'lsa (BTS pochta, taksi, shaxsiy kuryer), ilovada ham aynan shu tartibda yuboradi.</p>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-icon"><i data-lucide="globe"></i></div>
+          <div>
+            <h4>3. Xitoydan yoki Toshkentdan tovar sotish</h4>
+            <p>Ilovada endigina Xitoydan (Kargo/Taobao/1688) yoki Toshkentdagi yirik bozorlardan (Abu Saxiy, Chorsu, O'rikzor) o'z do'konini ochib yurgazayotganlar yoki avvaldan tajribali sotuvchilar bemalol o'z do'konini ocha oladi. Tovar joylayotganda uning qayerdan kelishini va yetib borish muddatini aniq ko'rsatish kifoya.</p>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-icon"><i data-lucide="tag"></i></div>
+          <div>
+            <h4>4. Bayramona chegirmalar va o'lchamlar (Razmerlar)</h4>
+            <p>Har bir kiyim ostiga uning o'lchamlari (S, M, L, XL va h.k.) va qachon kelishi aniq kiritilishi shart. Sotuvchi o'z tovariga xohlagan payt yoki Navro'z, Hayit, Yangi Yil bayramlarida maxsus chegirma foizini qo'yishi mumkin.</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="gold-solid-btn" id="rules-agree-and-open-btn"><i data-lucide="check-circle-2"></i> Tushundim va Do'kon ochishga o'tish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. CUSTOMER LOGIN / REGISTER MODAL (Email bilan) -->
+  <div class="modal-backdrop" id="customer-auth-modal" style="display: none;">
+    <div class="modal-container auth-modal-content">
+      <button class="modal-close-btn" id="customer-auth-close"><i data-lucide="x"></i></button>
+      <div class="modal-header">
+        <div class="logo-emblem">N</div>
+        <h2>Nigoh tizimiga kirish</h2>
+        <p>Xarid qilish va sevimli liboslarni saqlash uchun emailingizni kiriting</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="tab-login-btn">Kirish</button>
+        <button class="auth-tab-btn" id="tab-register-btn">Ro'yxatdan o'tish</button>
+      </div>
+
+      <form id="customer-auth-form" class="gold-form">
+        <div class="form-group" id="name-group" style="display: none;">
+          <label>Ism va familiyangiz</label>
+          <div class="input-with-icon">
+            <i data-lucide="user"></i>
+            <input type="text" id="cust-name" placeholder="Masalan: Nilufar Karimova">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email manzilingiz</label>
+          <div class="input-with-icon">
+            <i data-lucide="mail"></i>
+            <input type="email" id="cust-email" required placeholder="example@mail.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Parol</label>
+          <div class="input-with-icon">
+            <i data-lucide="lock"></i>
+            <input type="password" id="cust-password" required placeholder="Kamida 6 ta belgi">
+          </div>
+        </div>
+
+        <button type="submit" class="gold-solid-btn full-width" id="cust-submit-btn">
+          <span>Kirish</span>
+          <i data-lucide="arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="auth-switch-note">
+        <span>O'z magaziningizni ochmoqchimisiz?</span>
+        <button class="gold-text-btn" id="switch-to-seller-btn">ID karta bilan do'kon ochish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. SELLER REGISTRATION / LOGIN MODAL (ID Karta bilan) -->
+  <div class="modal-backdrop" id="seller-reg-modal" style="display: none;">
+    <div class="modal-container seller-modal-content">
+      <button class="modal-close-btn" id="seller-reg-close"><i data-lucide="x"></i></button>
+      <div class="modal-header">
+        <span class="gold-badge"><i data-lucide="shield-check"></i> ISHONCHLI SOTUVCHI</span>
+        <h2>O'z magaziningizni oching</h2>
+        <p>ID karta ma'lumotlari orqali rasmiy ro'yxatdan o'ting</p>
+      </div>
+
+      <form id="seller-reg-form" class="gold-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Sotuvchi to'liq ismi (F.I.Sh.) *</label>
+            <div class="input-with-icon">
+              <i data-lucide="user-check"></i>
+              <input type="text" id="seller-fullname" required placeholder="Pasport bo'yicha to'liq ism">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email manzili (Kabinet uchun) *</label>
+            <div class="input-with-icon">
+              <i data-lucide="mail"></i>
+              <input type="email" id="seller-email" required placeholder="dokon@mail.com">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>ID Karta / Pasport seriya va raqami *</label>
+            <div class="input-with-icon">
+              <i data-lucide="credit-card"></i>
+              <input type="text" id="seller-id-card" required placeholder="AA 1234567" maxlength="10">
+            </div>
+            <small class="helper-text">Do'kon xavfsizligi va buyurtmalar ishonchliligi uchun</small>
+          </div>
+          <div class="form-group">
+            <label>Bog'lanish telefoni *</label>
+            <div class="input-with-icon">
+              <i data-lucide="phone"></i>
+              <input type="tel" id="seller-phone" required placeholder="+998 (90) 123-45-67">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Do'koningiz nomi (Brend) *</label>
+            <div class="input-with-icon">
+              <i data-lucide="store"></i>
+              <input type="text" id="seller-shopname" required placeholder="Masalan: Silk & Gold Boutique">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Asosiy tovar kelish manbai *</label>
+            <div class="input-with-icon">
+              <i data-lucide="map-pin"></i>
+              <select id="seller-origin" class="form-select" required>
+                <option value="Toshkent (Abu Saxiy, Chorsu, O'rikzor)">Toshkent (Abu Saxiy, Chorsu, O'rikzor)</option>
+                <option value="Xitoydan to'g'ridan-to'g'ri (Kargo/Taobao/1688)">Xitoydan to'g'ridan-to'g'ri (Kargo/Taobao/1688)</option>
+                <option value="Mahalliy ishlab chiqaruvchi (O'zbekiston)">Mahalliy ishlab chiqaruvchi (O'zbekiston)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="logistics-checkbox-card">
+          <label class="custom-checkbox-container">
+            <input type="checkbox" id="seller-logistics-agree" required>
+            <span class="checkmark"></span>
+            <span class="checkbox-label-text">
+              <strong>Logistika qoidasini tasdiqlayman:</strong> Mijoz buyurtma berganda uning uy manziliga Yandex Delivery orqali yoki avval qanday yuborgan bo'lsam (pochta/taksi) shunday tartibda yuborish majburiyatini olaman.
+            </span>
+          </label>
+        </div>
+
+        <button type="submit" class="gold-solid-btn full-width" id="seller-submit-btn">
+          <i data-lucide="check-circle-2"></i>
+          <span>Do'konni ochish va Mahsulot qo'shish</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. SELLER DASHBOARD / MAHSULOT QO'SHISH & CHEGIRMA MODAL -->
+  <div class="modal-backdrop" id="seller-dashboard-modal" style="display: none;">
+    <div class="modal-container dashboard-modal-content">
+      <button class="modal-close-btn" id="seller-dashboard-close"><i data-lucide="x"></i></button>
+      <div class="dashboard-header">
+        <div>
+          <span class="gold-badge" id="dash-badge"><i data-lucide="store"></i> SOTUVCHI BOSHQARUVI</span>
+          <h2 id="dash-shop-name">Mening Do'konim</h2>
+          <p id="dash-shop-desc">Tovarlar qo'shing, bayram chegirmalarini belgilang va Yandex buyurtmalarini boshqaring</p>
+        </div>
+        <div class="dash-top-actions">
+          <button class="gold-solid-btn" id="dash-add-product-btn"><i data-lucide="plus"></i> Yangi tovar qo'shish</button>
+          <button class="gold-outline-btn" id="dash-logout-btn"><i data-lucide="log-out"></i> Chiqish</button>
+        </div>
+      </div>
+
+      <div class="dashboard-tabs">
+        <button class="dash-tab active" data-tab="products"><i data-lucide="package"></i> Tovarlarim (<span id="dash-my-product-count">0</span>)</button>
+        <button class="dash-tab" data-tab="orders"><i data-lucide="truck"></i> Mijoz Buyurtmalari (Yandex manzil bilan)</button>
+        <button class="dash-tab" data-tab="guide"><i data-lucide="info"></i> Sotuvchi Yo'riqnomasi</button>
+      </div>
+
+      <!-- Tab Content: Add / Manage Products -->
+      <div class="dash-tab-content active" id="tab-content-products">
+        
+        <!-- Add Product Form (Collapsible) -->
+        <div class="add-product-card" id="add-product-panel" style="display: none;">
+          <h3>Yangi Tovar Joylash</h3>
+          <form id="add-product-form" class="gold-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Tovar nomi *</label>
+                <input type="text" id="prod-title" required placeholder="Masalan: Oltin naqshli atlas ko'ylak">
+              </div>
+              <div class="form-group">
+                <label>Kategoriya *</label>
+                <select id="prod-category" class="form-select" required>
+                  <option value="ayollar">Ayollar liboslari</option>
+                  <option value="erkaklar">Erkaklar liboslari</option>
+                  <option value="poyabzal">Poyabzal & Aksessuar</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Asl narxi (so'm) *</label>
+                <input type="number" id="prod-price" required placeholder="Masalan: 450000">
+              </div>
+              <div class="form-group">
+                <label>Bayram/Maxsus chegirma foizi (%)</label>
+                <input type="number" id="prod-discount" min="0" max="90" placeholder="Masalan: 20 (foizda)">
+                <small class="helper-text">Istalgan vaqtda chegirma qo'yishingiz yoki o'chirishingiz mumkin</small>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Bayram belgisi (agar mavjud bo'lsa)</label>
+                <select id="prod-holiday" class="form-select">
+                  <option value="">Oddiy narx (Bayram belgisisiz)</option>
+                  <option value="🎉 Navro'z Chegirmasi">🎉 Navro'z Chegirmasi</option>
+                  <option value="🌙 Ramazon & Hayit">🌙 Ramazon & Hayit</option>
+                  <option value="❄️ Yangi Yil Aksiyasi">❄️ Yangi Yil Aksiyasi</option>
+                  <option value="🔥 Hafta Taklifi">🔥 Hafta Taklifi</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Qachon kelishi (Yetkazib berish muddati) *</label>
+                <input type="text" id="prod-delivery" required placeholder="Masalan: Toshkent bo'ylab 24 soatda yoki Xitoydan 7-10 kunda">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Mavjud o'lchamlar (Razmerlar) *</label>
+                <div class="sizes-checkbox-row">
+                  <label><input type="checkbox" name="prod-size" value="XS"> XS</label>
+                  <label><input type="checkbox" name="prod-size" value="S" checked> S</label>
+                  <label><input type="checkbox" name="prod-size" value="M" checked> M</label>
+                  <label><input type="checkbox" name="prod-size" value="L" checked> L</label>
+                  <label><input type="checkbox" name="prod-size" value="XL"> XL</label>
+                  <label><input type="checkbox" name="prod-size" value="XXL"> XXL</label>
+                  <label><input type="checkbox" name="prod-size" value="Standard"> Standart</label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Ombor / Manba joylashuvi *</label>
+                <select id="prod-warehouse" class="form-select" required>
+                  <option value="Toshkent omborida mavjud">Toshkent omborida mavjud</option>
+                  <option value="Xitoy omboridan buyurtmaga">Xitoy omboridan buyurtmaga</option>
+                  <option value="Mahalliy tikuv sexidan">Mahalliy tikuv sexidan</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Rasm havolasi (URL) *</label>
+              <input type="url" id="prod-image" required placeholder="https://images.unsplash.com/photo-...">
+              <small class="helper-text">Kiyimning yuqori sifatli rasmini kiriting</small>
+            </div>
+
+            <div class="form-group">
+              <label>Tavsif (Fasoni, matosi, qulayligi)</label>
+              <textarea id="prod-desc" rows="2" placeholder="Masalan: 100% tabiiy ipak matodan, nafis oltin bezakli, maxsus tadbirlar uchun..."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="gold-solid-btn"><i data-lucide="check"></i> Tovarni saqlash va e'lon qilish</button>
+              <button type="button" class="gold-outline-btn" id="cancel-add-product-btn">Bekor qilish</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Vendor Products List -->
+        <div class="vendor-products-table" id="vendor-products-list">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Tab Content: Orders with Customer Addresses -->
+      <div class="dash-tab-content" id="tab-content-orders" style="display: none;">
+        <div class="orders-guide-reminder">
+          <i data-lucide="info"></i>
+          <div>
+            <strong>Yandex Delivery eslatmasi:</strong>
+            Mijoz bergan aniq manzil va telefon raqamini nusxalab olib, Yandex Go ilovasi orqali kuryer chaqiring yoki doimiy jo'natish pochta usulingiz orqali jo'nating.
+          </div>
+        </div>
+        <div id="vendor-orders-list">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Tab Content: Guide -->
+      <div class="dash-tab-content" id="tab-content-guide" style="display: none;">
+        <div class="vendor-full-guide">
+          <h3>Nigoh platformasida sotuvchi bo'lish bo'yicha ko'rsatma</h3>
+          <p>Siz o'z do'koningizni Toshkent yoki Xitoy omborlari bilan bemalol ulab, quyidagi qulayliklardan foydalanasiz:</p>
+          <ul>
+            <li><strong>Mijoz uy manzili:</strong> Har bir buyurtmada mijozning to'liq manzili, telefon raqami va tanlagan razmeri chiqadi.</li>
+            <li><strong>Yetkazib berish erkinligi:</strong> Yandex kuryer, BTS pochta yoki avval qanday yuborgan bo'lsangiz shunday yuborishingiz mumkin.</li>
+            <li><strong>Chegirma o'rnatish:</strong> Bayram kunlari yoki dam olish kunlarida tovarlaringizga chegirma belgilab, savdoni oshirishingiz mumkin.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. PRODUCT DETAIL MODAL (Razmer tanlash, kelish muddati, Like, Savat) -->
+  <div class="modal-backdrop" id="product-detail-modal" style="display: none;">
+    <div class="modal-container product-modal-content">
+      <button class="modal-close-btn" id="product-detail-close"><i data-lucide="x"></i></button>
+      <div class="product-modal-grid">
+        <div class="product-modal-image-area">
+          <img id="detail-image" src="" alt="Mahsulot">
+          <div class="product-modal-badge" id="detail-holiday-badge"></div>
+        </div>
+        <div class="product-modal-info">
+          <div class="detail-seller-tag">
+            <i data-lucide="store"></i>
+            <span id="detail-seller-name">Do'kon</span>
+          </div>
+          <h2 id="detail-title">Libos nomi</h2>
+          
+          <div class="detail-prices">
+            <span class="detail-current-price" id="detail-price">0 so'm</span>
+            <span class="detail-old-price" id="detail-old-price"></span>
+            <span class="detail-discount-tag" id="detail-discount-tag"></span>
+          </div>
+
+          <!-- Kelish muddati & Ombor info -->
+          <div class="detail-delivery-box">
+            <div class="delivery-row">
+              <i data-lucide="clock"></i>
+              <div>
+                <strong>Qachon yetib keladi:</strong>
+                <p id="detail-delivery-time">Toshkent ichida 24 soat</p>
+              </div>
+            </div>
+            <div class="delivery-row">
+              <i data-lucide="map-pin"></i>
+              <div>
+                <strong>Ombor joylashuvi:</strong>
+                <p id="detail-warehouse">Toshkent</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Razmerlar (Sizes) -->
+          <div class="detail-size-section">
+            <label>O'lchamni tanlang (Razmer): <span id="selected-size-label" class="gold-text-bold">Tanlang</span></label>
+            <div class="size-options-group" id="detail-sizes-group">
+              <!-- Dynamically populated sizes -->
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="detail-desc-box">
+            <p id="detail-description">Tavsif</p>
+          </div>
+
+          <!-- Actions -->
+          <div class="detail-actions">
+            <button class="gold-solid-btn flex-grow" id="detail-add-cart-btn">
+              <i data-lucide="shopping-bag"></i>
+              <span>Savatga qo'shish</span>
+            </button>
+            <button class="gold-outline-btn like-btn-lg" id="detail-like-btn">
+              <i data-lucide="heart" id="detail-like-icon"></i>
+              <span id="detail-like-count">0</span>
+            </button>
+            <button class="gold-outline-btn" id="detail-ask-ai-btn" title="AI Stilistdan so'rash">
+              <i data-lucide="sparkles"></i>
+              <span>AI Stilist</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. CART & CHECKOUT DRAWER (Mijoz uy manzili & Yandex tanlovi) -->
+  <div class="cart-backdrop" id="cart-drawer-backdrop" style="display: none;">
+    <div class="cart-drawer">
+      <div class="drawer-header">
+        <div class="drawer-title">
+          <i data-lucide="shopping-bag"></i>
+          <h3>Savatingiz</h3>
+        </div>
+        <button class="drawer-close-btn" id="cart-drawer-close"><i data-lucide="x"></i></button>
+      </div>
+
+      <div class="drawer-body" id="cart-items-container">
+        <!-- Dynamically populated items or empty state -->
+      </div>
+
+      <!-- Checkout Form (When items exist) -->
+      <div class="drawer-checkout-panel" id="cart-checkout-panel" style="display: none;">
+        <div class="cart-total-row">
+          <span>Jami to'lov:</span>
+          <span class="cart-total-price" id="cart-total-amount">0 so'm</span>
+        </div>
+
+        <form id="checkout-form" class="gold-form checkout-form">
+          <h4><i data-lucide="map-pin"></i> Yetkazib berish manzili</h4>
+          
+          <div class="form-group">
+            <label>Qabul qiluvchi ismi va familiyasi *</label>
+            <input type="text" id="order-cust-name" required placeholder="Masalan: Malika Saidova">
+          </div>
+
+          <div class="form-group">
+            <label>Telefon raqam *</label>
+            <input type="tel" id="order-cust-phone" required placeholder="+998 90 123 45 67">
+          </div>
+
+          <div class="form-group">
+            <label>Aniq uy manzili (Yetkazish uchun) *</label>
+            <textarea id="order-cust-address" rows="2" required placeholder="Shahar, tuman, ko'cha, uy va xonadon raqami, mo'ljal"></textarea>
+            <small class="helper-text">Sotuvchi ushbu manzil bo'yicha Yandex kuryer orqali yetkazadi</small>
+          </div>
+
+          <div class="form-group">
+            <label>Yetkazib berish usulini tanlang *</label>
+            <select id="order-delivery-type" class="form-select">
+              <option value="Yandex Delivery (Eshikkacha tezkor)">🚕 Yandex Delivery (Eshikkacha tezkor)</option>
+              <option value="Standart pochta / BTS">📦 Standart pochta / BTS xizmati</option>
+              <option value="Sotuvchi shaxsiy kuryeri">🛵 Do'kon kuryeri orqali</option>
+            </select>
+          </div>
+
+          <button type="submit" class="gold-solid-btn full-width" id="place-order-btn">
+            <i data-lucide="check-circle"></i>
+            <span>Buyurtmani tasdiqlash</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. ORDER SUCCESS MODAL -->
+  <div class="modal-backdrop" id="order-success-modal" style="display: none;">
+    <div class="modal-container order-success-content">
+      <div class="success-icon-wrap"><i data-lucide="check"></i></div>
+      <h2>Buyurtmangiz qabul qilindi!</h2>
+      <p id="order-success-msg">Do'kon egasi sizning manzilingizni oldi va tez fursatda Yandex / kuryer orqali jo'natish choralarini ko'radi.</p>
+      <div class="order-summary-box" id="order-success-details"></div>
+      <button class="gold-solid-btn" id="order-success-ok-btn">Tushunarli, davom etish</button>
+    </div>
+  </div>
+
+  <!-- 9. NIGOH AI SUPPORT & STYLIST DRAWER (Sun'iy intellekt) -->
+  <div class="ai-widget-button" id="floating-ai-trigger" title="Nigoh AI Yordamchi">
+    <div class="ai-glow-ring"></div>
+    <i data-lucide="sparkles"></i>
+    <span class="ai-widget-label">Nigoh AI</span>
+  </div>
+
+  <div class="ai-chat-drawer" id="ai-chat-drawer" style="display: none;">
+    <div class="ai-chat-header">
+      <div class="ai-brand-info">
+        <div class="ai-avatar">
+          <i data-lucide="sparkles"></i>
+        </div>
+        <div>
+          <h4>Nigoh AI Yordamchi</h4>
+          <span class="ai-online-status"><span class="status-dot"></span> Onlayn • Stilist & Maslahatchi</span>
+        </div>
+      </div>
+      <button class="ai-close-btn" id="ai-chat-close"><i data-lucide="x"></i></button>
+    </div>
+
+    <div class="ai-chat-body" id="ai-chat-messages">
+      <div class="ai-msg ai-bot">
+        <div class="ai-msg-bubble">
+          Assalomu alaykum! Men <strong>Nigoh AI</strong> intellektual stilisti va yordamchisiman. ✨<br><br>
+          Sizga libos tanlash, qaysi fason qomatga mos kelishi, kiyimning yetib kelish muddati yoki o'z do'koningizni ochib Yandex orqali jo'natish bo'yicha yordam berishim mumkin. Qanday savolingiz bor?
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick prompt suggestions -->
+    <div class="ai-quick-prompts">
+      <button class="quick-chip" data-prompt="Qaysi libos bayram yoki to'y uchun eng yaxshi mos keladi?">👗 To'y va bayram liboslari</button>
+      <button class="quick-chip" data-prompt="Kiyimlar qachon yetib keladi va o'lchamni qanday tanlayman?">📏 O'lcham va kelish muddati</button>
+      <button class="quick-chip" data-prompt="Do'konimni ochib tovarlarni Yandex orqali qanday jo'nataman?">🏪 Do'kon ochish & Yandex logistika</button>
+    </div>
+
+    <div class="ai-chat-footer">
+      <form id="ai-chat-form" class="ai-input-form">
+        <input type="text" id="ai-input-field" placeholder="Nigoh AI ga savol bering..." autocomplete="off">
+        <button type="submit" class="ai-send-btn" id="ai-send-btn"><i data-lucide="send"></i></button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
